@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio Digital | Teoría de la Programación</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="#inicio" class="brand">Portafolio Digital</a>
+      <div class="nav-links">
+        <a href="#unidad1">Unidad 1</a>
+        <a href="#unidad2">Unidad 2</a>
+        <a href="#pdf">PDF</a>
+      </div>
+    </nav>
+    <section id="inicio" class="hero">
+      <div class="hero-card">
+        <p class="eyebrow">Universidad Nacional de Loja</p>
+        <h1>Portafolio de Teoría de la Programación</h1>
+        <p class="lead">Contenido organizado en formato web a partir del portafolio original.</p>
+        <div class="info-grid">
+          <div><strong>Carrera:</strong> Ingeniería en Computación</div>
+          <div><strong>Asignatura:</strong> Teoría de la Programación</div>
+          <div><strong>Ciclo:</strong> 1</div>
+          <div><strong>Docente:</strong> Lissete Geoconda Lopéz Faican</div>
+          <div><strong>Estudiante:</strong> Matias Joel Ortega Correa</div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn" href="#unidad1">Ver Unidad 1</a>
+          <a class="btn secondary" href="#unidad2">Ver Unidad 2</a>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section toc">
+      <h2>Contenido</h2>
+      <div class="cards two">
+        <a class="card-link" href="#unidad1"><span>Unidad 1</span><strong>Exploración y uso de herramientas digitales para pseudocódigo y diagramas de flujo</strong></a>
+        <a class="card-link" href="#unidad2"><span>Unidad 2</span><strong>Aplicación de estructuras condicionales y repetitivas en el diseño</strong></a>
+      </div>
+    </section>
+
+    <section id="unidad1" class="section unit">
+      <p class="eyebrow">Unidad 1</p>
+      <h2>Exploración y uso de herramientas digitales para pseudocódigo y diagramas de flujo</h2>
+      <h3>Contenidos</h3>
+
+      <article class="content-card">
+        <h4>Algoritmo</h4>
+        <p>Un algoritmo es un conjunto ordenado, finito y definido de instrucciones o reglas paso a paso que permiten solucionar un problema, realizar un cómputo o procesar datos. Funciona recibiendo datos de entrada (input), procesándolos mediante reglas lógicas y produciendo un resultado final (output). Son la base de la programación y la tecnología moderna.</p>
+        <p>Realice un algoritmo llamado <strong>“calculodegalones”</strong> que tiene como propósito convertir la producción diaria ingresada en litros a su equivalente en galones y, a partir de ello, calcular el monto total a cobrar según un precio por galón. Primero se definen las variables necesarias para almacenar los datos de entrada y los resultados, luego se solicita al usuario que ingrese la cantidad de litros producidos y el precio por galón. Posteriormente, en el proceso, se realiza la conversión de litros a galones utilizando el factor 3.785 y se calcula el total a pagar multiplicando los galones obtenidos por el precio ingresado. Finalmente, el algoritmo muestra en pantalla los resultados, es decir, la cantidad equivalente en galones y el total a cobrar, permitiendo así obtener de forma sencilla tanto la conversión de unidades como el cálculo económico correspondiente.</p>
+      </article>
+
+      <article class="content-card">
+        <h4>Pseudocódigo</h4>
+        <p>El pseudocódigo es una forma de representar algoritmos y la lógica de programación utilizando una mezcla de lenguaje natural (español) y estructuras de código, sin las reglas sintácticas estrictas de un lenguaje real. Sirve como borrador para planificar programas, enfocándose en el flujo lógico antes de la codificación.</p>
+        <p>En este caso presentamos el algoritmo de “calculodegalones”:</p>
+        <pre><code>Algoritmo calculodegalones
+
+    Definir litros, precioPorGalon Como Real
+    Definir galones, totalACobrar Como Real
+
+    Escribir "Ingrese la producción del día (en litros):"
+    Leer litros
+
+    Escribir "Ingrese el precio por galón ($):"
+    Leer precioPorGalon
+
+    galones &lt;- litros / 3.785
+    totalACobrar &lt;- galones * precioPorGalon
+
+    Escribir "----- Resultados -----"
+    Escribir "Equivalente en galones: ", galones, " galones"
+    Escribir "Total a cobrar: $", totalACobrar
+
+FinAlgoritmo</code></pre>
+      </article>
+
+      <article class="content-card">
+        <h4>Diagrama de flujo</h4>
+        <p>Un diagrama de flujo (o flujograma) es una representación gráfica de un proceso, algoritmo o sistema, que utiliza símbolos estandarizados conectados por flechas para secuenciar pasos. Permite visualizar de forma clara y ordenada acciones, decisiones y el flujo de información desde el inicio hasta el final de una tarea.</p>
+        <figure><img src="assets/images/page-04.jpg" alt="Diagrama de flujo del algoritmo calculodegalones"><figcaption>Diagrama de flujo del algoritmo calculodegalones.</figcaption></figure>
+      </article>
+
+      <article class="content-card">
+        <h4>Prueba de escritorio</h4>
+        <p>Una prueba de escritorio es la simulación manual y paso a paso de un algoritmo, pseudocódigo o código, utilizando papel y lápiz (o una tabla) para rastrear los valores de las variables y verificar la lógica sin ejecutarlo en la computadora. Es fundamental para detectar errores tempranos, validar la funcionalidad y entender el flujo del programa.</p>
+        <div class="table-wrap"><table><thead><tr><th>Paso</th><th>litros</th><th>precioPorGalon</th><th>galones</th><th>totalaCobrar</th></tr></thead><tbody><tr><td>Entrada</td><td>15</td><td>5</td><td></td><td></td></tr><tr><td>Conversión</td><td>15</td><td>5</td><td>3.96</td><td></td></tr><tr><td>Cálculo</td><td>15</td><td>5</td><td>3.96</td><td>19.80</td></tr></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Paso</th><th>litros</th><th>precioPorGalon</th><th>galones</th><th>totalaCobrar</th></tr></thead><tbody><tr><td>Entrada</td><td>50</td><td>3.2</td><td></td><td></td></tr><tr><td>Conversión</td><td>50</td><td>3.2</td><td>13.21</td><td></td></tr><tr><td>Cálculo</td><td>50</td><td>3.2</td><td>13.21</td><td>42.27</td></tr></tbody></table></div>
+      </article>
+
+      <article class="content-card">
+        <h4>Lenguajes de programación</h4>
+        <p>Los lenguajes de programación son sistemas formales utilizados para dar instrucciones a las computadoras, divididos principalmente en alto nivel (cercanos al humano) y bajo nivel (cercanos al hardware). Los más populares y utilizados incluyen Python (versátil), JavaScript (desarrollo web), Java (empresarial), C# (videojuegos) y C/C++ (rendimiento).</p>
+        <p>En clase usamos el lenguaje C en Visual Studio porque te permite entender las bases fundamentales de la programación, como el manejo de memoria, estructuras de control y lógica computacional de forma clara y directa. C es un lenguaje de bajo nivel comparado con otros, así que te obliga a comprender cómo funciona realmente el computador, lo cual fortalece tus habilidades para aprender otros lenguajes más fácilmente. Además, Visual Studio ofrece herramientas como depuración paso a paso y autocompletado que facilitan el aprendizaje, ayudándote a detectar errores y mejorar tu código de manera más rápida y profesional.</p>
+        <p>Mi pseudocódigo transformado en lenguaje C:</p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float litros, precioPorGalon;
+    float galones, totalACobrar;
+
+    printf("Ingrese la producción del día (en litros): ");
+    scanf("%f", &amp;litros);
+
+    printf("Ingrese el precio por galón ($): ");
+    scanf("%f", &amp;precioPorGalon);
+
+    galones = litros / 3.785;
+    totalACobrar = galones * precioPorGalon;
+
+    printf("\n----- Resultados -----\n");
+    printf("Equivalente en galones: %.2f\n", galones);
+    printf("Total a cobrar: $ %.2f\n", totalACobrar);
+
+    return 0;
+}</code></pre>
+      </article>
+
+      <article class="content-card">
+        <h4>Programación por bloques</h4>
+        <p>La programación por bloques es un método visual para crear software arrastrando y encajando piezas gráficas (bloques) que representan comandos, eliminando la necesidad de escribir sintaxis compleja. Es ideal para principiantes y niños, ya que permite aprender lógica de programación secuencial de forma intuitiva, lúdica y sin errores de escritura.</p>
+      </article>
+
+      <article class="content-card">
+        <h4>Ejercicio con estructura secuencial (lenguaje C en Visual Studio)</h4>
+        <h5>Planteamiento del problema</h5>
+        <p>Desarrollar un programa en lenguaje C que permita ingresar la base y la altura de un rectángulo, y calcule su área.</p>
+        <h5>Análisis del problema</h5>
+        <ul><li><strong>Datos de entrada:</strong> Base (b), Altura (h).</li><li><strong>Proceso:</strong> Área = base × altura.</li><li><strong>Salida:</strong> Área del rectángulo.</li></ul>
+        <h5>Diseño del algoritmo</h5>
+        <p><strong>Pseudocódigo:</strong></p>
+        <pre><code>Algoritmo Area_Rectangulo
+
+    Definir base, altura, area Como Real
+
+    Escribir "Ingrese la base:"
+    Leer base
+
+    Escribir "Ingrese la altura:"
+    Leer altura
+
+    area &lt;- base * altura
+
+    Escribir "El area del rectangulo es: ", area
+
+FinAlgoritmo</code></pre>
+        <p><strong>Diagrama de flujo:</strong></p>
+        <figure><img src="assets/images/page-07.jpg" alt="Diagrama de flujo del área del rectángulo"><figcaption>Diagrama de flujo del ejercicio de área del rectángulo.</figcaption></figure>
+        <h5>Codificación (C en Visual Studio)</h5>
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float base, altura, area;
+
+    printf("Ingrese la base: ");
+    scanf("%f", &amp;base);
+
+    printf("Ingrese la altura: ");
+    scanf("%f", &amp;altura);
+
+    area = base * altura;
+
+    printf("El area del rectangulo es: %.2f", area);
+
+    return 0;
+}</code></pre>
+        <h5>Validación (Prueba de escritorio)</h5>
+        <div class="table-wrap"><table><thead><tr><th>Base</th><th>Altura</th><th>Cálculo</th><th>Área</th></tr></thead><tbody><tr><td>5</td><td>3</td><td>5 × 3</td><td>15</td></tr><tr><td>2.5</td><td>4</td><td>2.5 × 4</td><td>10</td></tr></tbody></table></div>
+        <h5>Principales dificultades de los contenidos</h5>
+        <p>Durante el desarrollo de este ejercicio en C, una de las principales dificultades fue comprender cómo funcionan las variables, ya que es necesario entender que cada variable almacena un tipo de dato específico y debe ser declarada correctamente antes de usarse. También se presentó cierta dificultad al utilizar la función scanf, especialmente en el uso del símbolo &, el cual es obligatorio para indicar la dirección de memoria donde se guardará el valor ingresado por el usuario. Finalmente, otro aspecto importante fue diferenciar entre los tipos de datos como int y float, ya que elegir el tipo correcto es clave para evitar errores en los cálculos, sobre todo cuando se trabajan con números decimales.</p>
+        <h5>Reflexión crítica en la aplicación</h5>
+        <p>La estructura secuencial es considerada la más sencilla dentro de la programación porque las instrucciones se ejecutan una tras otra en un orden establecido, sin tomar decisiones ni repetir procesos. Este tipo de ejercicios es muy útil para desarrollar la lógica básica de programación, ya que permite enfocarse en la correcta comprensión de las variables, operaciones y entrada/salida de datos. Además, sirve como base fundamental antes de avanzar hacia estructuras más complejas como las condicionales y los ciclos, que requieren un mayor nivel de razonamiento y control del flujo del programa.</p>
+      </article>
+    </section>
+
+    <section id="unidad2" class="section unit">
+      <p class="eyebrow">Unidad 2</p>
+      <h2>Aplicación de estructuras condicionales y repetitivas en el diseño</h2>
+      <h3>Contenidos</h3>
+
+      <article class="content-card">
+        <h4>Estructuras condicionales</h4>
+        <p>Las estructuras condicionales permiten que un programa tome decisiones según una condición. Es decir, el programa evalúa si algo es verdadero o falso y, dependiendo del resultado, ejecuta una acción.</p>
+        <h5>Tipos principales</h5>
+        <h5>1. Condicional simple</h5>
+        <p>Se usa cuando solo se ejecuta una acción si la condición se cumple.</p>
+        <pre><code>Si condición Entonces
+    Acción
+FinSi</code></pre>
+        <figure><img src="assets/images/page-10.jpg" alt="Diagrama condicional simple"><figcaption>Diagrama de flujo: condicional simple.</figcaption></figure>
+        <h5>2. Condicional doble</h5>
+        <p>Se usa cuando hay una acción si la condición es verdadera y otra si es falsa.</p>
+        <pre><code>Si condición Entonces
+    Acción 1
+Sino
+    Acción 2
+FinSi</code></pre>
+        <figure><img src="assets/images/page-11.jpg" alt="Diagrama condicional doble"><figcaption>Diagrama de flujo: condicional doble.</figcaption></figure>
+        <h5>3. Condicional múltiple</h5>
+        <p>Se usa cuando existen varias condiciones o varios casos posibles.</p>
+        <pre><code>Según variable Hacer
+    Caso 1:
+        Acción 1
+    Caso 2:
+        Acción 2
+    De Otro Modo:
+        Acción 3
+FinSegún</code></pre>
+        <figure><img src="assets/images/page-12.jpg" alt="Diagrama condicional múltiple"><figcaption>Diagrama de flujo: condicional múltiple.</figcaption></figure>
+      </article>
+
+      <article class="content-card">
+        <h4>Estructuras repetitivas</h4>
+        <p>Las estructuras repetitivas permiten ejecutar una o varias instrucciones varias veces, mientras se cumpla una condición o hasta completar un número de repeticiones.</p>
+        <h5>1. Mientras</h5>
+        <p>Se usa cuando primero se evalúa la condición y luego se ejecutan las instrucciones.</p>
+        <pre><code>Mientras condición Hacer
+    Instrucciones
+FinMientras</code></pre>
+        <figure><img src="assets/images/page-13.jpg" alt="Diagrama mientras"><figcaption>Diagrama de flujo: estructura Mientras.</figcaption></figure>
+        <h5>2. Repetir...Hasta Que</h5>
+        <p>Se ejecuta al menos una vez y luego evalúa la condición.</p>
+        <pre><code>Repetir
+    Instrucciones
+Hasta Que condición</code></pre>
+        <figure><img src="assets/images/page-14.jpg" alt="Diagrama repetir hasta que"><figcaption>Diagrama de flujo: estructura Repetir...Hasta Que.</figcaption></figure>
+        <h5>3. Para</h5>
+        <p>Se usa cuando se conoce la cantidad de repeticiones.</p>
+        <pre><code>Para contador &lt;- valorInicial Hasta valorFinal Hacer
+    Instrucciones
+FinPara</code></pre>
+        <figure><img src="assets/images/page-15.jpg" alt="Diagrama para"><figcaption>Diagrama de flujo: estructura Para.</figcaption></figure>
+      </article>
+
+      <article class="content-card">
+        <h4>Ejercicio: Control de ventas en una tienda</h4>
+        <h5>Planteamiento del problema</h5>
+        <p>Se desea crear un programa que permita ingresar la cantidad de productos vendidos en una tienda. Por cada producto se debe ingresar su precio. Si el precio es menor o igual a 0, el programa debe mostrar un mensaje de error y volver a pedir el dato.</p>
+        <p>Al final, el programa debe calcular el total de la venta. Si el total supera los $100, se aplica un descuento del 10%. Caso contrario, no se aplica descuento.</p>
+        <h5>Análisis del problema</h5>
+        <div class="table-wrap"><table><thead><tr><th>Elemento</th><th>Descripción</th></tr></thead><tbody><tr><td>Datos de entrada</td><td>Cantidad de productos vendidos, precio de cada producto.</td></tr><tr><td>Proceso</td><td>1. Solicitar la cantidad de productos.<br>2. Validar que los productos sean mayores que 0.<br>3. Solicitar el precio de cada producto.<br>4. Validar que cada precio sea mayor que 0.<br>5. Acumular el total de las ventas.<br>6. Verificar si el total supera los $100.<br>7. Si supera los $100, calcular un descuento del 10%; caso contrario, descuento igual a 0.<br>8. Calcular el total final a pagar.</td></tr><tr><td>Datos de salida</td><td>Total de la venta, descuento aplicado y total final a pagar.</td></tr></tbody></table></div>
+        <h5>Diseño del algoritmo (Diagrama de Flujo)</h5>
+        <figure><img src="assets/images/page-17.jpg" alt="Diagrama de flujo control de ventas"><figcaption>Diagrama de flujo del control de ventas en una tienda.</figcaption></figure>
+        <h5>Codificación</h5>
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int cantidadProductos, i;
+    float precio, total = 0;
+    float descuento, totalFinal;
+
+    // Ingreso y validación de la cantidad de productos
+    do {
+        printf("Ingrese la cantidad de productos vendidos: ");
+        scanf("%i", &amp;cantidadProductos);
+
+        if (cantidadProductos &lt;= 0) {
+            printf("Ingrese una cantidad mayor que 0\n");
+        }
+    } while (cantidadProductos &lt;= 0);
+
+    // Ingreso y validación de precios
+    for (i = 1; i &lt;= cantidadProductos; i++) {
+        do {
+            printf("Ingrese el precio del producto #%i: ", i);
+            scanf("%f", &amp;precio);
+
+            if (precio &lt;= 0) {
+                printf("Ingrese un precio valido\n");
+            }
+        } while (precio &lt;= 0);
+
+        total = total + precio;
+    }
+
+    // Aplicación del descuento
+    if (total &gt; 100) {
+        descuento = total * 0.10;
+    } else {
+        descuento = 0;
+    }
+
+    // Cálculo del total final
+    totalFinal = total - descuento;
+
+    // Resultados
+    printf("\nTotal sin descuento: $%.2f\n", total);
+    printf("Descuento aplicado: $%.2f\n", descuento);
+    printf("Total a pagar: $%.2f\n", totalFinal);
+
+    return 0;
+}</code></pre>
+        <figure><img src="assets/images/page-18.jpg" alt="Código fuente en C parte 1"><figcaption>Código fuente en C, parte 1.</figcaption></figure>
+        <figure><img src="assets/images/page-19.jpg" alt="Código fuente en C parte 2 y prueba de escritorio"><figcaption>Código fuente en C, parte 2 y prueba de escritorio.</figcaption></figure>
+        <h5>Validación (Prueba de escritorio)</h5>
+        <div class="table-wrap"><table><thead><tr><th>Paso</th><th>Dato ingresado</th><th>Validación</th><th>Total acumulado</th></tr></thead><tbody><tr><td>Cantidad de productos</td><td>3</td><td>Válido</td><td>0</td></tr><tr><td>Producto #1</td><td>40</td><td>Válido</td><td>40</td></tr><tr><td>Producto #2</td><td>-10</td><td>Inválido, vuelve a pedir</td><td>40</td></tr><tr><td>Producto #2</td><td>35</td><td>Válido</td><td>75</td></tr><tr><td>Producto #3</td><td>50</td><td>Válido</td><td>125</td></tr></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Valor</th></tr></thead><tbody><tr><td>Total de venta</td><td>$125.00</td></tr><tr><td>¿Total &gt; 100?</td><td>Sí</td></tr><tr><td>Descuento (10%)</td><td>$12.50</td></tr><tr><td>Total a pagar</td><td>$112.50</td></tr></tbody></table></div>
+        <figure><img src="assets/images/page-20.jpg" alt="Resultado del programa y reflexión crítica"><figcaption>Resultado del programa, dificultades y reflexión crítica.</figcaption></figure>
+        <h5>Principales dificultades</h5>
+        <p>Una de las principales dificultades fue identificar correctamente cuándo usar una estructura condicional y cuándo usar una estructura repetitiva. También fue necesario validar los datos de entrada, ya que el programa no debe aceptar cantidades o precios menores o iguales a cero. Otra dificultad fue acumular correctamente el total de la venta dentro del ciclo, porque si esta operación se coloca fuera del for, el programa no sumaría todos los productos.</p>
+        <h5>Reflexión crítica</h5>
+        <p>La aplicación de estructuras condicionales y repetitivas permite resolver problemas de manera más ordenada y eficiente. En este ejercicio, las estructuras repetitivas ayudaron a ingresar varios productos sin repetir muchas veces el mismo código, mientras que las condicionales permitieron validar los datos y aplicar el descuento según el total de la compra. Esto demuestra que antes de programar es importante analizar el problema y diseñar el algoritmo, ya que así se reducen errores y se comprende mejor la lógica del programa.</p>
+      </article>
+    </section>
+
+    <section id="pdf" class="section pdf-section">
+      <h2>PDF original</h2>
+      <p>Se incluye el archivo original dentro del repositorio para consulta y descarga.</p>
+      <a class="btn" href="assets/PORTAFOLIO-DEFINITIVO.pdf">Abrir PDF original</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Portafolio Digital | Teoría de la Programación</p>
+  </footer>
+</body>
+</html>
