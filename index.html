@@ -13,6 +13,7 @@
         <div class="nav-links">
         <a href="#unidad1">Unidad 1</a>
         <a href="#unidad2">Unidad 2</a>
+        <a href="#unidad3">Unidad 3</a>
         <a href="#conclusion">Conclusión</a>
         <a href="#bibliografia">Bibliografía</a>
         <a href="#pdf">PDF</a>
@@ -22,7 +23,7 @@
       <div class="hero-card">
         <p class="eyebrow">Universidad Nacional de Loja</p>
         <h1>Portafolio de Teoría de la Programación</h1>
-        <p class="lead">Desarrollo de la lógica de programación mediante algoritmos, pseudocódigo, diagramas de flujo y estructuras de control en lenguaje C.</p>
+        <p class="lead">Desarrollo de la lógica de programación mediante algoritmos, pseudocódigo, diagramas de flujo y estructuras de control, modularidad y arreglos en lenguaje C.</p>
         <div class="info-grid">
           <div><strong>Carrera:</strong> Ingeniería en Computación</div>
           <div><strong>Asignatura:</strong> Teoría de la Programación</div>
@@ -33,6 +34,7 @@
         <div class="hero-actions">
           <a class="btn" href="#unidad1">Ver Unidad 1</a>
           <a class="btn secondary" href="#unidad2">Ver Unidad 2</a>
+          <a class="btn secondary" href="#unidad3">Ver Unidad 3</a>
         </div>
       </div>
     </section>
@@ -44,6 +46,7 @@
       <div class="cards two">
         <a class="card-link" href="#unidad1"><span>Unidad 1</span><strong>Exploración y uso de herramientas digitales para pseudocódigo y diagramas de flujo</strong></a>
         <a class="card-link" href="#unidad2"><span>Unidad 2</span><strong>Aplicación de estructuras condicionales y repetitivas en el diseño</strong></a>
+        <a class="card-link" href="#unidad3"><span>Unidad 3</span><strong>Modularidad, pase de parámetros y arreglos en lenguaje C</strong></a>
       </div>
     </section>
 
@@ -237,7 +240,7 @@ Hasta Que condición</code></pre>
         <pre><code>Para contador &lt;- valorInicial Hasta valorFinal Hacer
     Instrucciones
 FinPara</code></pre>
-        <figure><img src="assets/images/paginagod8.jpg" alt="Diagrama para"><figcaption>Diagrama de flujo: estructura Para.</figcaption></figure>
+        <figure><img src="assets/images/paginagod8.jpeg" alt="Diagrama para"><figcaption>Diagrama de flujo: estructura Para.</figcaption></figure>
       </article>
 
       <article class="content-card">
@@ -308,10 +311,204 @@ int main() {
         <p>La aplicación de estructuras condicionales y repetitivas permite resolver problemas de manera más ordenada y eficiente. En este ejercicio, las estructuras repetitivas ayudaron a ingresar varios productos sin repetir muchas veces el mismo código, mientras que las condicionales permitieron validar los datos y aplicar el descuento según el total de la compra. Esto demuestra que antes de programar es importante analizar el problema y diseñar el algoritmo, ya que así se reducen errores y se comprende mejor la lógica del programa.</p>
      </article>
 
-<article class="card">
-  <h3 id="conclusion">Conclusión</h3>
+</section>
+
+    <section id="unidad3" class="section unit">
+      <p class="eyebrow">Unidad 3</p>
+      <h2>Modularidad y arreglos en C</h2>
+      <h3>Contenidos</h3>
+
+      <article class="content-card">
+        <h4>Modularidad</h4>
+        <h5>1. Concepto e importancia</h5>
+        <p>La modularidad consiste en descomponer un programa grande en unidades más pequeñas llamadas módulos. En C, la unidad modular básica es la función. Cada función debe realizar una tarea concreta y comunicarse con otras funciones mediante parámetros y valores de retorno. En proyectos mayores, la modularidad también se expresa separando declaraciones en archivos de cabecera (.h) e implementaciones en archivos fuente (.c).</p>
+        <ul>
+          <li>Facilita la lectura del código, porque cada función representa una operación específica.</li>
+          <li>Favorece la reutilización, ya que una función bien diseñada puede utilizarse en diferentes partes del programa.</li>
+          <li>Simplifica las pruebas y la corrección de errores al permitir revisar cada módulo por separado.</li>
+          <li>Reduce la repetición de instrucciones y mejora el mantenimiento del software.</li>
+          <li>Permite distribuir el trabajo entre varios programadores cuando el proyecto se divide en archivos y responsabilidades.</li>
+        </ul>
+        <p>Una función en C posee un tipo de retorno, un nombre, una lista de parámetros y un cuerpo. El prototipo informa al compilador sobre la firma de la función antes de que sea llamada. Cuando no existe un valor de retorno se utiliza el tipo void. Las variables declaradas dentro de una función son locales y solamente existen dentro de su bloque; en cambio, las variables globales pueden ser accedidas desde varias funciones, aunque su uso excesivo aumenta el acoplamiento y dificulta el control del programa.</p>
+        <p class="example-title"><strong>Ejemplo 1. Estructura básica de un programa modular</strong></p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+int sumar(int a, int b);
+
+int main(void) {
+    int resultado = sumar(8, 5);
+    printf(&quot;Resultado: %d\n&quot;, resultado);
+    return 0;
+}
+
+// Definición del módulo 
+int sumar(int a, int b) {
+    return a + b;
+}</code></pre>
+        <p>En el ejemplo anterior, main coordina la ejecución y la función sumar resuelve una tarea específica. Esta separación hace que el programa sea más fácil de comprender y permite reemplazar o probar la operación de suma sin modificar toda la lógica principal.</p>
+        <h5>2. Pase de parámetros por valor</h5>
+        <p>En el paso por valor, la función recibe una copia del dato enviado. Por ello, cualquier modificación realizada sobre el parámetro local no cambia la variable original del programa que llamó a la función. Este es el mecanismo normal de C para argumentos escalares como int, float, double o char.</p>
+        <p class="example-title"><strong>Ejemplo 2. Parámetro por valor</strong></p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+void aumentarPorValor(int numero) {
+    numero = numero + 10;
+    printf(&quot;Dentro de la función: %d\n&quot;, numero);
+}
+
+int main(void) {
+    int valor = 20;
+
+    printf(&quot;Antes de llamar: %d\n&quot;, valor);
+    aumentarPorValor(valor);
+    printf(&quot;Después de llamar: %d\n&quot;, valor);
+
+    return 0;
+}</code></pre>
+        <p><strong>Salida esperada:</strong></p>
+        <pre><code>Antes de llamar: 20
+Dentro de la función: 30
+Después de llamar: 20</code></pre>
+        <p>La variable valor permanece con 20, porque aumentarPorValor únicamente cambia la copia local llamada numero. El paso por valor resulta apropiado cuando una función solo necesita leer un dato o cuando se desea proteger la variable original frente a modificaciones accidentales.</p>
+        <h5>3. Pase “por referencia” mediante punteros</h5>
+        <p>C no posee paso por referencia como mecanismo independiente: todos los argumentos se transmiten por valor. Sin embargo, es posible modificar una variable externa pasando por valor su dirección de memoria. La función recibe esa dirección en un puntero y utiliza el operador de indirección (*) para acceder al objeto original. Por esta razón, en la enseñanza suele denominarse “paso por referencia”, aunque técnicamente se trata de paso de punteros por valor [3].</p>
+        <p class="example-title"><strong>Ejemplo 3. Modificación de variables mediante direcciones y punteros</strong></p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+void intercambiar(int *a, int *b) {
+    int auxiliar = *a;
+    *a = *b;
+    *b = auxiliar;
+}
+
+int main(void) {
+    int x = 12;
+    int y = 35;
+
+    printf(&quot;Antes: x = %d, y = %d\n&quot;, x, y);
+    intercambiar(&amp;x, &amp;y);
+    printf(&quot;Después: x = %d, y = %d\n&quot;, x, y);
+
+    return 0;
+}</code></pre>
+      </article>
+
+      <article class="content-card">
+        <h4>Arreglos en C</h4>
+        <p>Un arreglo es una colección de elementos del mismo tipo almacenados en posiciones contiguas de memoria. Cada elemento se identifica mediante un índice entero. En C, el primer índice es 0 y el último es tamaño - 1. El lenguaje no comprueba automáticamente si un índice se encuentra dentro de los límites válidos, por lo que el programador debe controlar cuidadosamente los recorridos [3], [4].</p>
+        <div class="note"><strong>Regla esencial:</strong> Para un arreglo declarado como int datos[5], los índices válidos son 0, 1, 2, 3 y 4. Acceder a datos[5] queda fuera del arreglo y produce comportamiento indefinido.</div>
+        <h5>1. Arreglo unidimensional (vector)</h5>
+        <p>El arreglo unidimensional organiza los elementos en una sola secuencia. Se utiliza para listas de notas, edades, temperaturas, precios, contadores o cualquier conjunto lineal de datos del mismo tipo.</p>
+        <p class="example-title"><strong>Ejemplo 4. Arreglo unidimensional para calcular un promedio</strong></p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+#define CANTIDAD 5
+
+int main(void) {
+    int notas[CANTIDAD] = {78, 85, 91, 66, 80};
+    int suma = 0;
+    float promedio;
+
+    for (int i = 0; i &lt; CANTIDAD; i++) {
+        suma += notas[i];
+    }
+
+    promedio = (float)suma / CANTIDAD;
+    printf(&quot;Promedio: %.2f\n&quot;, promedio);
+
+    return 0;
+}</code></pre>
+        <p>El ciclo for recorre desde 0 hasta CANTIDAD - 1. La conversión (float)suma evita una división entera y permite conservar los decimales del promedio. La constante simbólica CANTIDAD reduce el riesgo de escribir tamaños diferentes en varias partes del programa.</p>
+        <h5>2. Arreglo bidimensional (matriz)</h5>
+        <p>Un arreglo bidimensional utiliza dos índices: uno para las filas y otro para las columnas. Su forma se asemeja a una tabla o matriz y es útil para representar calificaciones por estudiante y materia, tableros, imágenes simples, ventas por sucursal y mes, o matrices matemáticas.</p>
+        <p class="example-title"><strong>Ejemplo 5. Recorrido de una matriz de dos filas y tres columnas</strong></p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+#define FILAS 2
+#define COLUMNAS 3
+
+int main(void) {
+    int matriz[FILAS][COLUMNAS] = {
+        {4, 7, 2},
+        {9, 5, 6}
+    };
+
+    for (int fila = 0; fila &lt; FILAS; fila++) {
+        for (int columna = 0; columna &lt; COLUMNAS; columna++) {
+            printf(&quot;%d &quot;, matriz[fila][columna]);
+        }
+        printf(&quot;\n&quot;);
+    }
+
+    return 0;
+}</code></pre>
+        <p>El recorrido requiere dos ciclos anidados. El ciclo exterior controla las filas y el interior recorre las columnas de cada fila. En la memoria, C almacena las filas de forma consecutiva (orden por filas). Al enviar una matriz a una función, debe conocerse al menos el tamaño de las dimensiones posteriores para calcular correctamente cada posición.</p>
+        <p class="example-title"><strong>Ejemplo 6. Matriz enviada a una función</strong></p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+#define FILAS 2
+#define COLUMNAS 3
+
+void mostrarMatriz(int matriz[][COLUMNAS], int filas) {
+    for (int i = 0; i &lt; filas; i++) {
+        for (int j = 0; j &lt; COLUMNAS; j++) {
+            printf(&quot;%d &quot;, matriz[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+}
+
+int main(void) {
+    int datos[FILAS][COLUMNAS] = {{1, 2, 3}, {4, 5, 6}};
+    mostrarMatriz(datos, FILAS);
+    return 0;
+}</code></pre>
+        <h5>3. Arreglo multidimensional</h5>
+        <p>Un arreglo multidimensional posee tres o más índices. Un arreglo tridimensional puede interpretarse como un conjunto de matrices o capas. Este tipo de estructura se utiliza, por ejemplo, para registrar temperaturas por edificio, piso y habitación; datos por año, mes y día; o componentes de un modelo espacial. Aunque C permite más dimensiones, la complejidad de los recorridos y el consumo de memoria aumentan rápidamente.</p>
+        <p class="example-title"><strong>Ejemplo 7. Arreglo tridimensional</strong></p>
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    int cubo[2][2][3] = {
+        {{1, 2, 3}, {4, 5, 6}},
+        {{7, 8, 9}, {10, 11, 12}}
+    };
+
+    for (int capa = 0; capa &lt; 2; capa++) {
+        printf(&quot;Capa %d:\n&quot;, capa);
+        for (int fila = 0; fila &lt; 2; fila++) {
+            for (int columna = 0; columna &lt; 3; columna++) {
+                printf(&quot;%d &quot;, cubo[capa][fila][columna]);
+            }
+            printf(&quot;\n&quot;);
+        }
+    }
+
+    return 0;
+}</code></pre>
+        <p>En este caso se necesitan tres ciclos anidados. La cantidad total de enteros es 2 × 2 × 3 = 12. Antes de declarar arreglos grandes conviene calcular su memoria aproximada con sizeof y analizar si es preferible utilizar memoria dinámica.</p>
+      </article>
+
+      <article class="content-card">
+        <h4>Principales dificultades y reflexión crítica en la aplicación de los contenidos</h4>
+        <h5>4. Principales dificultades</h5>
+        <p><strong>Interpretar correctamente el “paso por referencia”. </strong>La expresión es útil pedagógicamente, pero puede ocultar que C continúa pasando por valor. Lo que se copia es la dirección. Comprender esta precisión ayuda a razonar sobre punteros, alias y efectos laterales.</p>
+        <p><strong>Controlar los límites de los arreglos. </strong>C no impide automáticamente acceder a una posición inválida. Un ciclo con la condición i &lt;= tamaño provoca una iteración adicional; la condición correcta suele ser i &lt; tamaño. Este error puede alterar memoria ajena al arreglo.</p>
+        <p><strong>Comunicar el tamaño a las funciones. </strong>Cuando un arreglo se pasa a una función, normalmente se convierte en un puntero a su primer elemento y la función no conoce por sí sola la cantidad de elementos. Por ello se debe enviar también el tamaño o emplear una convención clara.</p>
+        <p><strong>Diseñar módulos equilibrados. </strong>Dividir demasiado el programa puede producir muchas funciones pequeñas sin valor real, mientras que dividir poco genera funciones largas y difíciles de probar. El reto consiste en encontrar responsabilidades coherentes y una interfaz clara.</p>
+        <h5>5. Reflexión crítica</h5>
+        <p>La aplicación de la modularidad demuestra que programar no consiste únicamente en obtener una salida correcta. Un programa puede funcionar y, aun así, ser difícil de leer, probar o modificar. La calidad mejora cuando las funciones poseen nombres descriptivos, parámetros necesarios, pocas dependencias globales y un propósito claramente delimitado. No obstante, la modularidad también exige planificación: una división artificial o excesiva puede aumentar la cantidad de interfaces y hacer más difícil seguir el flujo de ejecución.</p>
+        <p>Los arreglos, por su parte, ofrecen eficiencia y una representación compacta de datos homogéneos. Su cercanía con la memoria es una ventaja formativa porque permite comprender índices, direcciones y recorridos. Al mismo tiempo, esa libertad implica responsabilidad: el lenguaje confía en que el programador respete los límites y mantenga coherencia entre el tamaño declarado y el tamaño utilizado. Esta característica explica por qué muchos errores en C no son errores sintácticos, sino fallos lógicos o de memoria.</p>
+        <p>La relación entre ambos contenidos es directa. Los arreglos adquieren mayor utilidad cuando se procesan mediante funciones especializadas: leer, mostrar, ordenar, buscar, sumar o calcular estadísticas. Para hacerlo correctamente, la interfaz de cada función debe indicar el tipo de los elementos, el tamaño y, en matrices, las dimensiones requeridas. Por tanto, el dominio de arreglos depende en gran medida de una comprensión sólida de funciones y punteros.</p>
+        <p>Una práctica crítica y responsable consiste en compilar con advertencias activadas, validar entradas, evitar constantes numéricas repetidas, documentar precondiciones y probar casos límite. Por ejemplo, deben probarse arreglos vacíos cuando el diseño lo permita, tamaños mínimos, valores repetidos, cadenas cercanas al límite y punteros potencialmente nulos. De esta manera, el aprendizaje pasa de memorizar sintaxis a construir soluciones confiables.</p>
+      </article>
+    </section>
+
+<section id="conclusion" class="section">
+<article class="content-card">
+  <h2>Conclusión</h2>
   <p>
-    La elaboración de este portafolio digital me permitió consolidar los conocimientos adquiridos durante el desarrollo de la asignatura de Teoría de la Programación, especialmente en temas relacionados con algoritmos, pseudocódigo, diagramas de flujo, pruebas de escritorio y estructuras de control en lenguaje C. A través del estudio de los contenidos teóricos y la resolución de ejercicios prácticos, fue posible comprender la importancia de analizar un problema antes de programarlo, diseñando soluciones ordenadas y eficientes mediante algoritmos bien estructurados. Asimismo, la aplicación de estructuras secuenciales, condicionales y repetitivas fortaleció la capacidad para desarrollar programas capaces de tomar decisiones, validar datos y automatizar procesos. De igual manera, la creación de este portafolio en formato de página web utilizando GitHub Pages permitió organizar y presentar las evidencias de aprendizaje de una manera más moderna, accesible e interactiva, integrando conocimientos básicos de publicación web y gestión de proyectos digitales. En conjunto, este trabajo no solo evidencia los aprendizajes alcanzados durante la unidad, sino que también demuestra el desarrollo progresivo de habilidades técnicas, analíticas y de resolución de problemas que constituyen una base fundamental para la formación profesional en Ingeniería en Computación.
+    La elaboración de este portafolio digital me permitió consolidar los conocimientos adquiridos durante el desarrollo de la asignatura de Teoría de la Programación, especialmente en temas relacionados con algoritmos, pseudocódigo, diagramas de flujo, pruebas de escritorio, estructuras de control, modularidad y arreglos en lenguaje C. A través del estudio de los contenidos teóricos y la resolución de ejercicios prácticos, fue posible comprender la importancia de analizar un problema antes de programarlo, diseñando soluciones ordenadas y eficientes mediante algoritmos bien estructurados. Asimismo, la aplicación de estructuras secuenciales, condicionales y repetitivas fortaleció la capacidad para desarrollar programas capaces de tomar decisiones, validar datos y automatizar procesos. De igual manera, la creación de este portafolio en formato de página web utilizando GitHub Pages permitió organizar y presentar las evidencias de aprendizaje de una manera más moderna, accesible e interactiva, integrando conocimientos básicos de publicación web y gestión de proyectos digitales. En conjunto, este trabajo no solo evidencia los aprendizajes alcanzados durante la unidad, sino que también demuestra el desarrollo progresivo de habilidades técnicas, analíticas y de resolución de problemas que constituyen una base fundamental para la formación profesional en Ingeniería en Computación.
   </p>
 
 <h3 id="bibliografia">Bibliografía</h3>

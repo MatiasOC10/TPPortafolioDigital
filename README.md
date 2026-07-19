@@ -14,4 +14,5 @@ Página web estática lista para publicar en GitHub Pages.
 
 - Unidad 1: Exploración y uso de herramientas digitales para pseudocódigo y diagramas de flujo.
 - Unidad 2: Aplicación de estructuras condicionales y repetitivas en el diseño.
+- Unidad 3: Modularidad, pase de parámetros y arreglos en lenguaje C.
 - PDF original incluido en `assets/PORTAFOLIO-DEFINITIVO.pdf`.
