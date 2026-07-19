@@ -15,4 +15,7 @@ Página web estática lista para publicar en GitHub Pages.
 - Unidad 1: Exploración y uso de herramientas digitales para pseudocódigo y diagramas de flujo.
 - Unidad 2: Aplicación de estructuras condicionales y repetitivas en el diseño.
 - Unidad 3: Modularidad, pase de parámetros y arreglos en lenguaje C.
+- Conclusiones generales para todo el portafolio.
+- Bibliografía general en formato IEEE.
+- Declaración general de uso de IA generativa.
 - PDF original incluido en `assets/PORTAFOLIO-DEFINITIVO.pdf`.
