@@ -333,178 +333,98 @@ int sumar(int a, int b) {
 }</code></pre>
 <p>En el ejemplo anterior, <code>main</code> coordina la ejecución y la función <code>sumar</code> resuelve una tarea específica. Esta separación hace que el programa sea más fácil de comprender y permite reemplazar o probar la operación de suma sin modificar toda la lógica principal.</p>
 <h5>2. Pase de parámetros por valor y mediante punteros</h5>
-<p>En el paso por valor, una función recibe copias de los datos enviados y cualquier cambio realizado dentro de ella no modifica las variables originales. En cambio, cuando se envía la dirección de una variable mediante un puntero, la función puede acceder al dato original y modificarlo. En C, esta segunda técnica suele llamarse “paso por referencia”, aunque técnicamente la dirección también se transmite por valor.</p>
+<p>En C, los parámetros pueden enviarse por valor o mediante punteros. En el paso por valor la función recibe una copia del dato, por lo que los cambios internos no modifican la variable original. Mediante punteros se envía la dirección de memoria, permitiendo modificar directamente el valor almacenado.</p>
+
 <div class="problem-box">
-<h6>Problema aplicado: cálculo de una compra con descuento</h6>
-<p>Una tienda necesita calcular el total de una compra. El usuario debe ingresar la cantidad de productos, el precio unitario y el porcentaje de descuento. El descuento se calculará mediante una función que reciba los datos por valor. Después, otra función recibirá la dirección del total y lo modificará directamente para aplicar el descuento.</p>
-</div>
-<h6>Análisis del problema</h6>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Elemento</th><th>Descripción</th></tr></thead>
-<tbody>
-<tr><td>Datos de entrada</td><td>Cantidad de productos, precio unitario y porcentaje de descuento.</td></tr>
-<tr><td>Proceso</td><td>Calcular el subtotal, obtener el descuento por valor y actualizar el total mediante un puntero.</td></tr>
-<tr><td>Datos de salida</td><td>Subtotal, descuento calculado y total final de la compra.</td></tr>
-<tr><td>Pase por valor</td><td><code>calcularDescuento</code> recibe copias del subtotal y del porcentaje.</td></tr>
-<tr><td>Pase mediante puntero</td><td><code>aplicarDescuento</code> recibe la dirección de <code>total</code> y modifica su contenido.</td></tr>
-</tbody>
-</table>
+<h6>Problema aplicado 1: Pase de parámetros por valor</h6>
+<p>Una empresa necesita calcular el aumento salarial de un trabajador. El programa recibe el salario actual y el porcentaje de incremento. La función encargada del cálculo recibe estos datos por valor y devuelve el nuevo salario sin modificar la variable original.</p>
 </div>
 <h6>Solución en lenguaje C</h6>
 <pre><code>#include &lt;stdio.h&gt;
 
-float calcularDescuento(float subtotal, float porcentaje) {
-    return subtotal * porcentaje / 100.0f;
-}
-
-void aplicarDescuento(float *total, float descuento) {
-    *total = *total - descuento;
+float calcularAumento(float salario, float porcentaje) {
+    return salario + (salario * porcentaje / 100);
 }
 
 int main(void) {
-    int cantidad;
-    float precioUnitario;
-    float porcentajeDescuento;
-    float subtotal;
-    float descuento;
-    float total;
+    float salario = 1500;
+    float nuevoSalario;
 
-    printf("Ingrese cantidad de productos: ");
-    scanf("%d", &amp;cantidad);
+    nuevoSalario = calcularAumento(salario, 10);
 
-    printf("Ingrese precio unitario: ");
-    scanf("%f", &amp;precioUnitario);
-
-    printf("Ingrese porcentaje de descuento: ");
-    scanf("%f", &amp;porcentajeDescuento);
-
-    if (cantidad &lt;= 0 || precioUnitario &lt;= 0 ||
-        porcentajeDescuento &lt; 0 || porcentajeDescuento &gt; 100) {
-        printf("Datos no validos.\n");
-        return 1;
-    }
-
-    subtotal = cantidad * precioUnitario;
-
-    /* Pase por valor: la función recibe copias de los datos. */
-    descuento = calcularDescuento(subtotal, porcentajeDescuento);
-
-    total = subtotal;
-
-    /* Pase mediante puntero: se modifica directamente total. */
-    aplicarDescuento(&amp;total, descuento);
-
-    printf("\nSubtotal: $%.2f\n", subtotal);
-    printf("Descuento calculado: $%.2f\n", descuento);
-    printf("Total final: $%.2f\n", total);
+    printf("Salario inicial: %.2f\n", salario);
+    printf("Nuevo salario: %.2f\n", nuevoSalario);
 
     return 0;
 }</code></pre>
 <p class="terminal-title"><strong>Salida en terminal</strong></p>
-<pre class="terminal-output"><code>Ingrese cantidad de productos: 4
-Ingrese precio unitario: 25.50
-Ingrese porcentaje de descuento: 10
+<pre class="terminal-output"><code>Salario inicial: 1500.00
+Nuevo salario: 1650.00</code></pre>
 
-Subtotal: $102.00
-Descuento calculado: $10.20
-Total final: $91.80</code></pre>
-<p>La función <code>calcularDescuento</code> trabaja con copias del subtotal y del porcentaje, por lo que no altera esas variables en <code>main</code>. La función <code>aplicarDescuento</code>, en cambio, recibe la dirección de <code>total</code> y modifica directamente su valor original.</p>
+<div class="problem-box">
+<h6>Problema aplicado 2: Modificación mediante punteros</h6>
+<p>Una tienda desea actualizar el stock de un producto después de una venta. La función recibe la dirección de la cantidad disponible mediante un puntero y modifica directamente el valor original.</p>
+</div>
+<h6>Solución en lenguaje C</h6>
+<pre><code>#include &lt;stdio.h&gt;
+
+void venderProducto(int *stock, int cantidad) {
+    *stock = *stock - cantidad;
+}
+
+int main(void) {
+    int stock = 50;
+
+    printf("Stock inicial: %d\n", stock);
+    venderProducto(&amp;stock, 8);
+    printf("Stock después de la venta: %d\n", stock);
+
+    return 0;
+}</code></pre>
+<p class="terminal-title"><strong>Salida en terminal</strong></p>
+<pre class="terminal-output"><code>Stock inicial: 50
+Stock después de la venta: 42</code></pre>
 </article>
 <article class="content-card">
 <h4>Arreglos en C</h4>
-<p>Un arreglo es una colección de elementos del mismo tipo almacenados en posiciones contiguas de memoria. Cada elemento se identifica mediante un índice entero. En C, el primer índice es 0 y el último es tamaño - 1. El lenguaje no comprueba automáticamente si un índice se encuentra dentro de los límites válidos, por lo que el programador debe controlar cuidadosamente los recorridos [3], [4].</p>
-<div class="note"><strong>Regla esencial:</strong> Para un arreglo declarado como <code>int datos[5]</code>, los índices válidos son 0, 1, 2, 3 y 4. Acceder a <code>datos[5]</code> queda fuera del arreglo y produce comportamiento indefinido.</div>
-<h5>1. Tipos de arreglos</h5>
-<p><strong>Arreglo unidimensional:</strong> organiza datos en una sola secuencia y se utiliza para listas de notas, edades, temperaturas o precios.</p>
-<p><strong>Arreglo bidimensional:</strong> utiliza filas y columnas, por lo que permite representar tablas, matrices o calificaciones de varios estudiantes en diferentes materias.</p>
-<p><strong>Arreglo multidimensional:</strong> posee tres o más índices y puede representar conjuntos de matrices, capas o información organizada en varias dimensiones.</p>
-<div class="problem-box">
-<h6>Problema aplicado: control de calificaciones de estudiantes</h6>
-<p>Se necesita desarrollar un programa que registre las calificaciones de tres estudiantes en tres materias. El programa debe validar que cada nota se encuentre entre 0 y 100, calcular el promedio de cada estudiante y determinar quién obtuvo el promedio más alto. Para resolverlo se utilizará una matriz para almacenar las notas y un arreglo unidimensional para guardar los promedios.</p>
-</div>
-<h6>Análisis del problema</h6>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Elemento</th><th>Descripción</th></tr></thead>
-<tbody>
-<tr><td>Datos de entrada</td><td>Nueve calificaciones: tres notas para cada uno de los tres estudiantes.</td></tr>
-<tr><td>Estructuras utilizadas</td><td>Una matriz <code>notas[3][3]</code> y un vector <code>promedios[3]</code>.</td></tr>
-<tr><td>Proceso</td><td>Validar las notas, sumar cada fila, calcular los promedios y comparar los resultados.</td></tr>
-<tr><td>Datos de salida</td><td>Promedio de cada estudiante y estudiante con el promedio más alto.</td></tr>
-</tbody>
-</table>
-</div>
-<h6>Solución en lenguaje C</h6>
+<p>Los arreglos permiten almacenar varios datos del mismo tipo en posiciones consecutivas de memoria. En C existen arreglos unidimensionales, bidimensionales y multidimensionales, los cuales permiten organizar información según la cantidad de índices necesarios.</p>
+
+<h5>1. Arreglo unidimensional (vector)</h5>
+<div class="problem-box"><h6>Problema aplicado: Registro de temperaturas semanales</h6><p>Un sistema meteorológico necesita almacenar las temperaturas de siete días y calcular el promedio semanal. Para ello se utiliza un arreglo unidimensional.</p></div>
 <pre><code>#include &lt;stdio.h&gt;
-
-#define ESTUDIANTES 3
-#define MATERIAS 3
-
 int main(void) {
-    float notas[ESTUDIANTES][MATERIAS];
-    float promedios[ESTUDIANTES];
-    int mejorEstudiante = 0;
-
-    for (int i = 0; i &lt; ESTUDIANTES; i++) {
-        float suma = 0.0f;
-
-        printf("\nEstudiante %d\n", i + 1);
-        for (int j = 0; j &lt; MATERIAS; j++) {
-            do {
-                printf("Ingrese la nota %d: ", j + 1);
-                scanf("%f", &amp;notas[i][j]);
-
-                if (notas[i][j] &lt; 0 || notas[i][j] &gt; 100) {
-                    printf("La nota debe estar entre 0 y 100.\n");
-                }
-            } while (notas[i][j] &lt; 0 || notas[i][j] &gt; 100);
-
-            suma += notas[i][j];
-        }
-
-        promedios[i] = suma / MATERIAS;
-    }
-
-    for (int i = 1; i &lt; ESTUDIANTES; i++) {
-        if (promedios[i] &gt; promedios[mejorEstudiante]) {
-            mejorEstudiante = i;
-        }
-    }
-
-    printf("\nRESULTADOS\n");
-    for (int i = 0; i &lt; ESTUDIANTES; i++) {
-        printf("Estudiante %d - Promedio: %.2f\n",
-               i + 1, promedios[i]);
-    }
-
-    printf("Mejor promedio: Estudiante %d con %.2f\n",
-           mejorEstudiante + 1, promedios[mejorEstudiante]);
-
+    float temperatura[7] = {25,27,26,28,30,29,27};
+    float suma=0;
+    for(int i=0;i&lt;7;i++) suma += temperatura[i];
+    printf("Promedio semanal: %.2f", suma/7);
     return 0;
 }</code></pre>
-<p class="terminal-title"><strong>Salida en terminal</strong></p>
-<pre class="terminal-output"><code>Estudiante 1
-Ingrese la nota 1: 85
-Ingrese la nota 2: 90
-Ingrese la nota 3: 78
+<p class="terminal-title"><strong>Salida en terminal</strong></p><pre class="terminal-output"><code>Promedio semanal: 27.43</code></pre>
 
-Estudiante 2
-Ingrese la nota 1: 92
-Ingrese la nota 2: 88
-Ingrese la nota 3: 95
+<h5>2. Arreglo bidimensional (matriz)</h5>
+<div class="problem-box"><h6>Problema aplicado: Ventas mensuales por sucursal</h6><p>Una empresa registra las ventas de dos sucursales durante tres meses utilizando una matriz de filas y columnas.</p></div>
+<pre><code>#include &lt;stdio.h&gt;
+int main(void){
+ int ventas[2][3]={{100,150,200},{120,170,220}};
+ for(int i=0;i&lt;2;i++){
+  int total=0;
+  for(int j=0;j&lt;3;j++) total+=ventas[i][j];
+  printf("Sucursal %d: %d\n",i+1,total);
+ }
+ return 0;
+}</code></pre>
+<p class="terminal-title"><strong>Salida en terminal</strong></p><pre class="terminal-output"><code>Sucursal 1: 450
+Sucursal 2: 510</code></pre>
 
-Estudiante 3
-Ingrese la nota 1: 70
-Ingrese la nota 2: 75
-Ingrese la nota 3: 80
-
-RESULTADOS
-Estudiante 1 - Promedio: 84.33
-Estudiante 2 - Promedio: 91.67
-Estudiante 3 - Promedio: 75.00
-Mejor promedio: Estudiante 2 con 91.67</code></pre>
-<p>La matriz permite organizar las notas por estudiante y materia, mientras que el vector almacena un promedio por cada estudiante. Los ciclos anidados recorren todas las posiciones de la matriz y la validación evita registrar valores fuera del intervalo permitido.</p>
+<h5>3. Arreglo multidimensional</h5>
+<div class="problem-box"><h6>Problema aplicado: Temperatura por edificio, piso y habitación</h6><p>Un sistema almacena temperaturas organizadas en tres dimensiones: edificio, piso y habitación.</p></div>
+<pre><code>#include &lt;stdio.h&gt;
+int main(void){
+ int datos[2][2][2]={{{20,22},{21,23}},{{24,25},{26,27}}};
+ printf("Temperatura registrada: %d", datos[1][1][1]);
+ return 0;
+}</code></pre>
+<p class="terminal-title"><strong>Salida en terminal</strong></p><pre class="terminal-output"><code>Temperatura registrada: 27</code></pre>
 </article>
 <article class="content-card">
 <h4>Principales dificultades y reflexión crítica en la aplicación de los contenidos</h4>
